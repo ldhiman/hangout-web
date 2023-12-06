@@ -1,12 +1,12 @@
-  var firebaseConfig = {
-    apiKey: "AIzaSyCstGkDUH2CV06xBhvr2mZou64AC5x2wS0",
-    authDomain: "hangout-2cb1a.firebaseapp.com",
-    databaseURL: "https://hangout-2cb1a-default-rtdb.firebaseio.com",
-    projectId: "hangout-2cb1a",
-    storageBucket: "hangout-2cb1a.appspot.com",
-    messagingSenderId: "877913039664",
-    appId: "1:877913039664:web:a4e35528598f97cb5a9ef5",
-    measurementId: "G-JNP67BGJQP"
+ var firebaseConfig = {
+    apiKey: //Project Api Key,
+    authDomain: //Auth Domain,
+    databaseURL: //Database URL,
+    projectId: //Project ID,
+    storageBucket: //Storage Bucket,
+    messagingSenderId: //Messaging Sender,
+    appId: //App id,
+    measurementId: //Measurement ID
   };
   firebase.initializeApp(firebaseConfig);
 
