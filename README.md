@@ -47,7 +47,9 @@ Your security is our top priority. HangoutWeb employs robust encryption mechanis
 
 4. Select the recently created project.
 
-5. After setting up Firebase, run the Firebase emulator:
+5. Add Firebase Config Variables in Index.js and Call.js and Scale Drone Api Key in Call.js  
+
+6. After setting up Firebase, run the Firebase emulator:
     ```bash
     firebase emulators:start
     ```
