@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-storage.js"></script>
+  <script type='text/javascript' src='https://cdn.scaledrone.com/scaledrone.min.js'></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="jquery.js"></script>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="Call.css" />
+  <meta name="viewport" content="width=device-width">
+</head>
+<script>
+    var firebaseConfig = {
+    apiKey: "AIzaSyCstGkDUH2CV06xBhvr2mZou64AC5x2wS0",
+    authDomain: "hangout-2cb1a.firebaseapp.com",
+    databaseURL: "https://hangout-2cb1a-default-rtdb.firebaseio.com",
+    projectId: "hangout-2cb1a",
+    storageBucket: "hangout-2cb1a.appspot.com",
+    messagingSenderId: "877913039664",
+    appId: "1:877913039664:web:a4e35528598f97cb5a9ef5",
+    measurementId: "G-JNP67BGJQP"
+  };
+  firebase.initializeApp(firebaseConfig);
+  var db = firebase.firestore();
+  var uid = firebase.auth().currentUser.uid;
+</script>
+<body>
+  <div id="clock" style="color:white;position:absolute;right:25px;top:25px;"></div>
+  <div id="state" style="color:white;position:absolute;z-index:10">Calling.....</div>
+  <div style="display:flex;">
+    <video id="localVideo" autoplay playisline muted>Connecting...</video>
+    <video id="remoteVideo" autoplay hidden>Connecting...</video>
+  </div>  
+  <div class="menu">
+    <button onclick="toggleMic()"><span id="mic_btn" class="material-icons material-icons-outlined">mic_off</span></button>
+    <button style="background:red" onclick="drone.close();"><span class="material-icons material-icons-outlined">call_end</span></button>
+    <button onclick="toggleVideo()"><span id="video_btn" class="material-icons material-icons-outlined">videocam_off</span></button>
+  </div>
+  <audio id="ring" src="ringing.wav" loop autoplay hidden>
+  <audio id="end" src="ended.mp3" hidden>
+  <p>If you are reading this, it is because your browser does not support the audio element.     </p>
+  </audio>
+  <script src="Call.js"></script>
+
+</body>
+</html>

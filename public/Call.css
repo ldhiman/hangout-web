@@ -1,0 +1,59 @@
+body{
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+      align-items: center;
+      justify-content: center;
+      padding: 0 50px;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #111;
+      overflow: hidden;
+}
+
+body *{
+    margin:5px;
+}
+
+#localVideo{
+    position: absolute;
+    left: 25px;
+    bottom: 10px;
+    z-index: 1;
+    max-width: 18vw;
+}
+
+#remoteVideo{
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    overflow: hidden;
+    z-index: 0;
+    padding:20px 5px;
+}
+
+video{
+    box-sizing: border-box;
+    border-radius: 2px;
+    padding: 1px;
+    background: #111;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+    color: white;
+}
+
+button{
+    border-radius: 50%;
+    border: 0;
+    height: 50px;
+    width: 50px;
+    background: #4f7dfe;
+    color: white;
+}
+
+.menu{
+    position: absolute;
+    bottom: 8vh;
+}

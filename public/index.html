@@ -1,0 +1,405 @@
+
+<!Doctype HTMl>
+<html lang="en">
+
+<head>
+
+<title>Hangout Web</title>
+
+<link rel ="icon" href = 
+"https://firebasestorage.googleapis.com/v0/b/hangout-2cb1a.appspot.com/o/logo.png?alt=media&token=966910bb-a0c8-4323-8473-c0666014c3aa" 
+        type = "image/x-icon">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="loginstyle.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-performance.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<link rel="prefetch" href="https://c.tenor.com/unvXyxtdn3oAAAAC/no-result.gif" />
+<link rel="prefetch" href="https://img.icons8.com/color/36/000000/pdf-2--v1.png" />
+<link rel="prefetch" href="https://flevix.com/wp-content/uploads/2020/02/Loading-Image-1.gif" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+<script src="icon.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+
+	const encryptWithAES = (text) => {
+  const passphrase = uid;
+  return CryptoJS.AES.encrypt(text, passphrase).toString();
+};
+
+const decryptWithAES = (ciphertext, pharse) => {
+  const passphrase = pharse;
+  const bytes = CryptoJS.AES.decrypt(ciphertext, passphrase);
+  const originalText = bytes.toString(CryptoJS.enc.Utf8);
+  return originalText;
+};
+
+</script>
+
+
+<script src="jquery.js"></script>
+<script src="msg_listner.js"></script>
+<script src="avatar.js"></script>
+<script src="login.js"></script>
+<script src="register.js"></script>
+<script src="msg_handler.js"></script>
+<script src="msg_handle.js"></script>
+<script src="online.js"></script>
+<script src="presence.js"></script>
+<script src="upload.js"></script>
+<script src="uploadFile.js"></script>
+<script src="record.js"></script>
+<script src="Call_home.js"></script>
+<script src="seen.js"></script>
+
+
+<body onload="deviceCheck()">
+	
+	<!-- LOADING PAGE -->
+	<div id="preloader" class="loading">
+		<div class="loader-right"></div>
+		<div class="loader-left"></div>
+	</div>
+
+
+<link rel="stylesheet" href="Dark.css" />
+
+	<div id='loader' class="loading">
+		<div class="loader-right"></div>
+		<div class="loader-left"></div>
+	</div>
+
+	<div id="loading_animation">
+		<div class="multi-ripple">
+  			<div></div>
+  			<div></div>
+			<span style="position:relative;top:90px;left:15px;">Loading....</span>
+		</div>
+	</div>
+
+	<!-- Login Page -->
+	<div id="login-page" class="login">
+		<div id="login-card">
+		<div class="loader-bar" id="loader-bar"></div>		
+		<img src="logobg.png" style="display:block;margin-left:auto;margin-right:auto;"/>
+		<input id="Name" type="name" align="center" placeholder="Name" required style="color:black;">
+		<span id="UserPhone"><input id="phone" type="tel" name="phone" align="center" placeholder="Phone" required style="color:black;"></span>
+		<input id="Email" type="email" align="center" placeholder="Email" required style="color:black;">
+		<input id="Password" type="password" align="center" placeholder="Password" required style="color:black;">
+		<button id="btn_login" onClick="login()">Login</button>
+		<span id="register_link" class="login-card-hyperlink" onclick="user_register()" style="color:#4f7dfe">create an account!!</span>
+		<span id="forgot_link" class="login-card-hyperlink" onclick="user_forgot_password()" style="color:#4f7dfe">Forget Password??</span>
+		</div>
+	</div>
+	
+	<script>
+
+   	const phoneInputField = document.querySelector("#phone");
+   	const phoneInput = window.intlTelInput(phoneInputField, {
+		initialCountry: "in",
+		preferredCountries: ["in", "us", "uk"],
+     	utilsScript:
+       		"https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+   		});
+ 	</script>
+
+	<!-- Chat Page -->
+	<div id="chat-page" class="chat-page">
+		
+		<div class="menu-holder">
+			<div class='user-profile'>
+					<section class='user-img' id="self-img"></section>
+					<section style="display:flex;flex-direction:column">
+						<section class='user-name' id="self-name"></section>
+						<section class='user-search-id'></section>
+					</section>	
+					<section><span onclick="editInfo()" class="user-edit material-icons material-icons-round">edit</span></section><br>
+					<section id="online_status" style="display:none;color:red;z-index:1001; animation: fade cubic-bezier(1, 0.25, 0, 0.9) 2s infinite"><span class="material-icons material-icons-round" style="margin-right: 15px;">signal_wifi_connected_no_internet_4</span></section>
+				</div>
+				<div class="dot3">
+					<div class="dot3_button" onclick="showmenu()"><span class="material-icons material-symbols-outlined" style="color:var(--default-primary-color)">more_vert</span></div>
+				</div>
+		</div>
+		<div class="holder-menu">
+			<div id="send_verify_link" class="menu-item" onclick="sendVerificationLink()">Send Verification Link</div>
+			<div class="menu-item" onclick="showSearch()">Add New Friend</div>
+			<div class="menu-item" onclick="changeTheme()" ondblclick="changeTheme()">Change Theme</div>
+			<div class="menu-item" onclick="forgot_password()">Change Password</div>
+			<div class="menu-item" onclick="logout()">Logout</div>
+			<div class="menu-about" style="padding: 4px 5px 0px 5px;margin-top: 5px;border-top: 1px solid white;">Web Version 1.8.0</div>
+		</div>
+
+
+		<!--<div class="add-story" hidden="">
+			<button class="AddStoryBtn" onclick="setStory()">Add Story</button>
+		</div>-->
+		
+		<div class="incoming-call"></div>
+
+		<div class="container">
+			<div class="left">
+				<input placeholder="Search" class='search' id='search'>
+				<div class='user-list'>
+				</div>
+				<div id='no-search' style="display:none;"><img src="https://c.tenor.com/unvXyxtdn3oAAAAC/no-result.gif" style="width:100%;height:100%;"><span>No User found</span></div>
+			</div>
+
+			<div class="mid">
+				<div class='initial'>
+					<div class="init-loading">
+						<div class="loader-right"></div>
+						<div class="loader-left"></div>
+						<span>Select the User to start Chat</span>
+					</div>
+				</div>
+				<div class="header">
+					<img class="header-img">
+					<section style="display:flex;flex-direction:column;">
+						<section style="display:flex;flex-direction:row;width:-webkit-fill-available">
+							<section class='header-name'></section>
+							<section id='header-online'>●</section>
+						</section>
+						<section id="header_lastseen" style="display:flex;flex-direction:row;">Click here for more info</section>	
+					</section>					
+					<section style="display:flex;flex-direction:row;margin-left:auto">
+						<i id='favorite' onclick="addFavourite()" class="fa-solid fa-heart"></i>
+						<i id="videocall" class="fa-solid fa-video" onclick="makeCall()"></i>
+					</section>						
+				</div>
+				<div class='menu'>
+				</div>
+				<div class="view">
+				</div>
+				<div class="chat">
+					<div class="spinner-box">
+						<div class="circle-border">
+							<div class="circle-core">
+							</div>
+						</div>
+									<button id="UploadBtn" class="send material-icons material-icons-round" onclick="loadUpload()">attachment</button>
+					</div>
+        			<div class='audio-record' style="display:none;width:-webkit-fill-available;margin-left:10px;">Recording..</div>					
+					<div class="audio" style="display:none;">
+						<audio id="recorded" controls></audio>
+						<button class="send material-icons material-icons-round" onclick="discardrecord()">close</button>						
+						<button class="send material-icons material-icons-round audio-send">send</button>						
+					</div>
+					<input class='msg' placeholder="type a message">
+					<button id="sendBtn" class="send material-icons material-icons-round" onclick="record()">mic</button>
+				</div>
+			</div>
+			
+			<div class="right">
+				<div class='initial'></div>
+				<div class='user-card'>
+					<section style="position:relative">
+						<img class="header-img" id='user-img-right'>
+						<span id="verified" class="material-icons material-symbols-outlined verify" style="font-size:30px" hidden title="verified">verified</span>
+					</section>
+					<section class='header-name' id ='user-name-right'></section>
+					<section class='header-search-id' id ='user-id-right'></section>
+				</div>
+				
+				<div style="margin-left:5px;">
+					<section class='heading'>Friends</section>
+					<div class='FriendList'>
+				</div>
+				</div>
+			</div>
+
+			<div class="user-profile-card">
+				<img class="user-profile-card-img" src="">
+				<div class="user-profile-card-name"></div>
+				<div class="user-profile-card-id"></div>
+				<div class="user-profile-card-status"></div>
+			</div>
+
+			<div class="UploadFile">
+                <div class="file-preview" style="margin:5px;">
+                    <span id="file-name-Preview" style="max-width:100%;max-height:10%;"></span></div>
+                <div class="UploadFiletoServer" id="file-upload" style="margin:5px;">
+                    <input type="file" id="upload-btn" accept="*" hidden="">
+                    <label for="upload-btn">Choose File</label>
+                </div>
+                <div class="SendFile" style="margin: 10px; display: none;">
+                    <button onclick="sendToServer()" class="default-button" id='file-send'>Send</button>
+                </div>
+        	</div>
+		</div>	 
+	</div>	
+
+	<div class="friend-request-view">
+		
+	</div>
+
+
+	<div class="user-request-card">
+				<img class="user-request-card-img" src="">
+				<div class="user-request-card-name"></div>
+				<div class="user-request-card-id"></div>
+				<div class="user-request-card-status"></div>
+				<div class="user-request-card-button">
+					<button id="accept">Accept <span class="fa fa-check"></span></button>
+					<button id="deny">Deny <span class="fa fa-close"></span></button>
+				</div>
+			</div>
+
+	<div class='search-friend'>
+		<span onclick="hideSearch()" style="cursor:pointer;color:white;position:relative;top:20px;left:20px;" class="material-icons material-icons-round">close</span>
+		<div class="input-holder"><input maxlength='6' placeholder="Enter User ID here" class='input-id'><span class="user-search-btn material-icons material-icons-round" onclick="searchUser()">search</span></div>
+		<div class="search-result"></div>
+	</div>
+
+	<div class='toast-holder'></div>
+
+	<div class="story-container" hidden>
+        <div class="preview-story" style="margin:5px;"></div>
+        <div class="UploadFiletoServer" id="file-upload" style="margin:5px;">
+            <input type="file" id="story-btn" hidden="">
+            <label for="story-btn">Choose File</label>
+        </div>
+		<div class="setStory" style="margin: 10px; display: none;">
+			<button class="default-button" id='file-send-story'>Set as Story</button>
+        </div>
+	</div>
+
+	<div class="user-edit-container">
+		<div class="user-edit-pane">
+			<img class="edit-info-img">
+			<button class="default-button" onclick="ImageGen()">Generate Image</button>
+			<input type="file" id="upload-image" accept="image/*" hidden="">
+            <label for="upload-image" class="default-button">Upload Image</label>
+			<input class="edit-info-holder" id="edit-info-name" placeholder="Name">
+			<input class="edit-info-holder" id="edit-info-status" placeholder="Status">
+			<button class="default-button" style="font-size:26px" onclick="saveUserInfo()">Save</button>
+		</div>
+	</div>
+
+	<div class="full_screen_view">
+		<div class="tool-kit">
+			<div class="file_name"></div>
+			<div class="tools">
+				<span style="font-size:xx-large" id="download-file"  class="material-icons material-icons-round">download</span>
+				<span style="font-size:xx-large" onclick="CloseFullScreenView()" class="material-icons material-icons-round">close</span>
+			</div>
+		</div>
+		<div class="full_screen_element">
+		</div>
+	</div>
+  <audio id="ring" src="ringing.wav" loop hidden>
+  <audio id="end" src="ended.mp3" hidden>
+
+	<script>
+		
+		var ring = document.getElementById("ring");
+		var end = document.getElementById("end");
+		var preloader = document.getElementById('preloader');
+		window.addEventListener('load', function(){
+			setTimeout(function(){preloader.style.display = 'none';},800);
+		})
+
+		$('.search-friend').hide();
+		$('.user-profile-card').hide();
+		updateStatus();
+	</script>
+
+
+<script>
+ checkTheme()
+ </script>
+
+	<script>
+$(".incoming-call").hide();
+	
+	$('.msg').on('input', function() { 
+    	Empty();
+    });
+
+	</script>
+
+	<script>
+  var accepted = ['image', 'video', 'application', 'audio'];
+  $('.SendFile').show();
+  $(function() {
+     $("#upload-btn:file").change(function (){
+		$('.file-preview').empty();
+       	var data = $(this)[0].files[0];
+       	console.log(data);
+		$('#file-send').show();        
+		if(accepted.includes(data['type'].split('/')[0])){
+            var fr = new FileReader();
+            fr.onload = function(){
+				console.log(data.type);
+				if (data.type.match('image.*')) {
+					$('#file-name-Preview').text(data['name'] + " (" + sizeunits(data['size'])+")");
+                	$('.file-preview').prepend(`
+                    	<img class="filePreview" src="${fr.result}" loading="eager" style="max-width:30vw;max-height:30vh;">
+                	`)
+            	}else if(data.type.match('video.*')){
+					$('#file-name-Preview').text(data['name'] + " (" + sizeunits(data['size'])+")");
+                	$('.file-preview').prepend(`
+						<video id="playerVideo" controls autoplay class="filePreview">
+                	    	<source src="${fr.result}" type="${data['type']}" style="max-width:30vw;max-height:30vh">
+						</video>
+                	`)
+					var video = document.getElementById('playerVideo');
+					video.src = URL.createObjectURL(data);
+				}else if(data.type.match('audio.*')){
+					$('#file-name-Preview').text(data['name'] + " (" + sizeunits(data['size'])+")");
+                	$('.file-preview').prepend(`
+						<audio id="playerVideo" controls class="filePreview">
+                	    	<source src="${fr.result}" type="${data['type']}" style="max-width:30vw;max-height:30vh">
+						</audio>
+                	`)
+					var video = document.getElementById('playerVideo');
+					video.src = URL.createObjectURL(data);
+            	}else if (data.type.match('application/pdf')) {
+					$('#file-name-Preview').empty();
+					$('#file-name-Preview').html(`<span class="material-icons material-icons-round" style="color:#fc0000">picture_as_pdf</span> ${data['name']} (${sizeunits(data['size'])})`);
+            	}
+				$('#file-send').attr('onclick', `sendToServer('${fr.result}', '${data["type"]}', '${data["name"]}', '${current}', '${data}')`);
+            };
+            fr.readAsDataURL($(this)[0].files[0]);
+            $('.SendFile').show();
+            $('.UploadFiletoServer').show();
+        }else{
+            $('#file-name-Preview').empty();
+            $('#filePreview').removeAttr('src');
+            $('.SendFile').hide();
+            $('.UploadFiletoServer').show();
+			showtoast('Invalid File Type');
+        }    
+     });
+  });
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+:root {
+  --default-primary-color: #4f7dfe;
+  --default-secondary-color: #aaa;
+  --profile-img-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+  --light-color: white;
+  --antique-white-color: antiquewhite;
+  --dark-color: black;
+  --blackish-color: #222;
+  --text-color: white;
+}
+
+*{
+  color: white;
+}
+
+.iti__country-name{
+	color:black;
+}
+
+.user-search-holder{
+  background: #222;
+}
+
+.container{
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.pdf_holder_user{
+  background: #121212;
+}
+
+.pdf_holder_user div:only-child{
+  background: #00000050;
+}
+
+.default-button{
+  background: var(--default-primary-color);
+  color: var(--light-color);
+}
+
+.left{
+  background: #111;
+}
+
+.mid{
+  background: #111;
+	border: 1px solid #222;
+}
+
+.right{
+  background: #111;
+}
+
+.initial{
+  background: #111;
+}
+
+.init-loading span{
+  background: #555;
+  position:relative;
+  top:55%;
+  left:30%;
+  user-select:none;
+  padding:4px 8px;
+  border-radius:8px;
+  color:white;
+  font-size:18px
+}
+
+.loader-left{
+  border-left-color: var(--default-primary-color);
+  border-right-color: var(--default-primary-color);
+}
+
+.loader-right{
+  border-bottom-color: var(--default-secondary-color);
+  border-top-color: var(--default-secondary-color);
+}
+
+.user-list-holder{
+  box-shadow:rgb(114 114 114 / 25%) 0px 1px 0px 0px;
+}
+
+.menu-holder{
+  background: #222;
+}
+
+.chat-user{
+  background: #292a2b;
+}
+
+.search{
+  background: #121212;
+  box-shadow: rgb(0 0 0 / 5%) 0px 0px 0px 1px, rgb(59 61 63) 0px 0px 0px 1px inset;
+}
+
+.user-edit{
+  color:#444;
+}
+
+.chat{
+  background: #121212;
+}
+
+.msg{
+  background: #121111;
+  box-shadow: rgb(0 0 0 / 5%) 0px 0px 0px 1px, #29292b 0px 0px 0px 1px inset;
+}
+
+.msg:focus{
+	border:0;
+	outline: none;
+	box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 1px 1px, #282828 0px 0px 0px 1px inset;
+}
+
+.right-search-holder{
+  background: #121212;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #252525;
+  border-radius: 20px;
+}
+
+.user-profile-card{
+  background: #141414;
+  box-shadow: 0 4px 30px rgb(69 67 67 / 10%);
+  border: 1px solid rgb(56 53 53 / 31%); 
+}
+
+.img{
+  box-shadow: inset rgb(0 0 0) 0px -20px 20px 20px;
+}
+
+.friend-request-holder{
+  background: #222;
+}
