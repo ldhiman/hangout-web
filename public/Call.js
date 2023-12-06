@@ -75,7 +75,7 @@ function toggleMic() {
 }
 state.innerHTML="Calling....";
 
-const drone = new ScaleDrone('9vDMXfUJBS5D1YK1');
+const drone = new ScaleDrone(//Scale Drone API Key);
 const roomName = 'observable-' + roomHash;
 const configuration = {
   /*iceServers: [{url:'stun:stun01.sipphone.com'},
@@ -96,22 +96,7 @@ const configuration = {
 {url:'stun:stun.voipbuster.com'},
 {url:'stun:stun.voipstunt.com'},
 {url:'stun:stun.voxgratia.org'},
-{url:'stun:stun.xten.com'},
-{
-    url: 'turn:numb.viagenie.ca',
-    credential: 'muazkh',
-    username: 'webrtc@live.com'
-},
-{
-    url: 'turn:192.158.29.39:3478?transport=udp',
-    credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
-    username: '28224511:1379330808'
-},
-{
-    url: 'turn:192.158.29.39:3478?transport=tcp',
-    credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
-    username: '28224511:1379330808'
-}]*/
+{url:'stun:stun.xten.com'}]*/
 iceServers: [{
    urls: 'stun:stun.l.google.com:19302' // Google's public STUN server
  }]
